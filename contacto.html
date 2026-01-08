@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | xndev</title>
+    <style>
+        :root {
+            --negro: #000000;
+            --blanco: #ffffff;
+            --gris: #121212;
+            --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--fuente);
+            background-color: var(--negro);
+            color: var(--blanco);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--blanco);
+            text-decoration: none;
+            border-bottom: 2px solid var(--blanco);
+            padding-bottom: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--blanco);
+            text-decoration: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .section {
+            padding: 8rem 2rem 5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: var(--blanco);
+            margin: 0.8rem auto;
+        }
+
+        .contact-box {
+            background: rgba(18, 18, 18, 0.9);
+            padding: 2rem;
+            border-radius: 5px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-box label {
+            display: block;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-box input,
+        .contact-box textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: #0d0d0d;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--blanco);
+            border-radius: 3px;
+        }
+
+        .contact-box textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-box button {
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: var(--blanco);
+            border: 1px solid var(--blanco);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .contact-box button:hover {
+            background: var(--blanco);
+            color: var(--negro);
+        }
+
+        footer {
+            background-color: var(--negro);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .copyright {
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--negro);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo">xndev</a>
+        <div class="menu-toggle">☰</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="privacy.html">Privacidad</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="section">
+    <h2 class="section-title">Contacto</h2>
+
+    <div class="contact-box">
+        <form action="mailto:liamdevxd@gmail.com" method="POST" enctype="text/plain">
+            <label>Nombre</label>
+            <input type="text" name="Nombre" placeholder="Tu nombre" required>
+
+            <label>Email</label>
+            <input type="email" name="Email" placeholder="Tu correo" required>
+
+            <label>Mensaje</label>
+            <textarea name="Mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+
+            <button type="submit">Enviar mensaje</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p class="copyright">© 2026 xndev. Todos los derechos reservados.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('active');
+});
+
+particlesJS('particles-js', {
+    particles: {
+        number: { value: 80 },
+        color: { value: ["#ffffff", "#cccccc"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        move: { enable: true, speed: 2 }
+    }
+});
+</script>
+
+</body>
+</html>

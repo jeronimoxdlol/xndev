@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad | xndev</title>
+    <style>
+        :root {
+            --negro: #000000;
+            --blanco: #ffffff;
+            --neon: #00f7ff;
+            --gris: #121212;
+            --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--fuente);
+            background-color: var(--negro);
+            color: var(--blanco);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--blanco);
+            text-decoration: none;
+            border-bottom: 2px solid var(--blanco);
+            padding-bottom: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--blanco);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            color: var(--blanco);
+            font-size: 1.5rem;
+        }
+
+        .section {
+            padding: 8rem 2rem 5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: var(--blanco);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: var(--blanco);
+            margin: 0.8rem auto;
+        }
+
+        .privacy-box {
+            background: rgba(18, 18, 18, 0.9);
+            padding: 2rem;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            line-height: 1.7;
+        }
+
+        .privacy-box h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-box p {
+            opacity: 0.85;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: var(--negro);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--negro);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo">xndev</a>
+        <div class="menu-toggle">☰</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="index.html#proyectos">Proyectos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="privacy.html">Privacidad</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="section">
+    <h2 class="section-title">Política de Privacidad</h2>
+
+    <div class="privacy-box">
+        <p>En xndev, tu privacidad es una prioridad. Esta política describe cómo recopilamos, usamos y protegemos tu información.</p>
+
+        <h3>1. Información que recopilamos</h3>
+        <p>Podemos recopilar datos como nombre, correo electrónico, dirección IP y cualquier información que el usuario proporcione voluntariamente.</p>
+
+        <h3>2. Uso de la información</h3>
+        <p>Utilizamos los datos para mejorar nuestros servicios, responder consultas, brindar soporte y personalizar la experiencia del usuario.</p>
+
+        <h3>3. Protección de datos</h3>
+        <p>Implementamos medidas de seguridad para proteger tu información contra accesos no autorizados.</p>
+
+        <h3>4. Cookies</h3>
+        <p>Este sitio puede utilizar cookies para mejorar la experiencia de navegación. Puedes desactivarlas desde tu navegador.</p>
+
+        <h3>5. Cambios en la política</h3>
+        <p>Nos reservamos el derecho de actualizar esta política en cualquier momento.</p>
+
+        <h3>6. Contacto</h3>
+        <p>Si tienes dudas sobre esta política, puedes contactarnos por nuestros medios oficiales.</p>
+    </div>
+</section>
+
+<footer>
+    <p class="copyright">© 2026 xndev. Todos los derechos reservados.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('active');
+});
+
+particlesJS('particles-js', {
+    particles: {
+        number: { value: 80 },
+        color: { value: ["#ffffff", "#cccccc"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        move: { enable: true, speed: 2 }
+    }
+});
+</script>
+
+</body>
+</html>

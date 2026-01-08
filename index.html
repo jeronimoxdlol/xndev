@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xndev - Portafolio Profesional</title>
+    <style>
+        :root {
+            --negro: #000000;
+            --blanco: #ffffff;
+            --neon: #00f7ff;
+            --gris: #121212;
+            --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--fuente);
+            background-color: var(--negro);
+            color: var(--blanco);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--blanco);
+            text-decoration: none;
+            border-bottom: 2px solid var(--blanco);
+            padding-bottom: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--blanco);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--blanco);
+            opacity: 0.8;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            color: var(--blanco);
+            font-size: 1.5rem;
+        }
+
+        .section {
+            padding: 8rem 2rem 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: var(--blanco);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: var(--blanco);
+            margin: 0.8rem auto;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            background-color: transparent;
+            color: var(--blanco);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--blanco);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--blanco);
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--blanco);
+            border: 1px solid var(--blanco);
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+
+        .btn:hover {
+            background-color: var(--blanco);
+            color: var(--negro);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: rgba(18, 18, 18, 0.9);
+            padding: 2rem;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
+        }
+
+        .card h3 {
+            color: var(--blanco);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            color: var(--blanco);
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Carrusel de servidores (10 segundos, continuo, sin reset) */
+        .servers-carousel {
+            width: 100%;
+            overflow: hidden;
+            margin: 3rem 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            padding: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .servers-track {
+            display: flex;
+            animation: scroll 10s linear infinite;
+        }
+
+        .servers-track:hover {
+            animation-play-state: paused;
+        }
+
+        .server-item {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 2.5rem;
+            text-align: center;
+        }
+
+        .server-item img {
+            width: 220px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 2px solid var(--blanco);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .server-item span {
+            color: var(--blanco);
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        footer {
+            background-color: var(--negro);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--blanco);
+            text-decoration: none;
+            transition: color 0.3s;
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--blanco);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+
+        .copyright {
+            color: var(--blanco);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--negro);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .server-item {
+                margin: 0 1.5rem;
+            }
+
+            .server-item img {
+                width: 160px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">xndev</a>
+            <div class="menu-toggle">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#equipo">Equipo</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>xndev (Liam)</h1>
+            <p>Especialista en administración de servidores, automatización y desarrollo de bots para famosos.</p>
+            <a href="servicios.html" class="btn">Ver Servicios</a>
+        </div>
+    </section>
+
+    <section id="proyectos" class="section">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Bot de Atención 24/7</h3>
+                <p>Implementación de un bot con IA para atención al cliente.</p>
+            </div>
+            <div class="card">
+                <h3>Bot IA</h3>
+                <p>Nuestro equipo crea Bots de discord IA, Que responden como chat-gpt, usando api de open-router.</p>
+            </div>
+            <div class="card">
+                <h3>Sistema de Monitoreo</h3>
+                <p>Desarrollo de dashboard personalizado para monitoreo en tiempo real de servidores y redes.</p>
+            </div>
+        </div>
+        <div class="servers-carousel">
+            <div class="servers-track">
+                <!-- Servidores originales -->
+                <div class="server-item">
+                    <img src="https://cdn.discordapp.com/attachments/1189597284632100935/1458216693808496855/Screenshot_20260106_184810_Discord.jpg?ex=695ed5a0&is=695d8420&hm=02ef643141d64e85d2464677d49246da16ba81447f82cedb2b3c2bee39e72141&" alt="Servidor 1">
+                    <span>Co Ceo (Administrador)</span>
+                </div>
+                <div class="server-item">
+                    <img src="https://cdn.discordapp.com/attachments/1189597284632100935/1458216694169468988/Screenshot_20260106_184830_Discord.jpg?ex=695ed5a0&is=695d8420&hm=79bed5b879e7dce585e4987be89b121bef378daa9dc2dcb8c695ad19469d47fa&" alt="Servidor 2">
+                    <span>Desarrollador del bot</span>
+                </div>
+                <div class="server-item">
+                    <img src="https://cdn.discordapp.com/attachments/1189597284632100935/1458216694919987373/Screenshot_20260106_185004_Discord.jpg?ex=695ed5a0&is=695d8420&hm=28d844efde1143b5e9870db3a86755988f07e1fa979bdf239bd5cf24f196117c&" alt="Servidor 3">
+                    <span>Administrador</span>
+                </div>
+                <div class="server-item">
+                    <img src="https://cdn.discordapp.com/attachments/1189597284632100935/1458216694496366947/Screenshot_20260106_184943_Discord.jpg?ex=695ed5a0&is=695d8420&hm=8349a59316322e316315b2faff5c5db158768d3e40f99e0f032d004bf1458eee&" alt="Servidor 4">
+                    <span>Administrador</span>
+                </div>
+                <!-- Duplicados para efecto continuo -->
+                <div class="server-item">
+                    <img src="https://cdn.discordapp.com/attachments/1189597284632100935/1458216693808496855/Screenshot_20260106_184810_Discord.jpg?ex=695ed5a0&is=695d8420&hm=02ef643141d64e85d2464677d49246da16ba81447f82cedb2b3c2bee39e72141&" alt="Servidor 1">
+                    <span>Co Ceo (Administrador)</span>
+                </div>
+                <div class="server-item">
+                    <img src="https://cdn.discordapp.com/attachments/1189597284632100935/1458216694169468988/Screenshot_20260106_184830_Discord.jpg?ex=695ed5a0&is=695d8420&hm=79bed5b879e7dce585e4987be89b121bef378daa9dc2dcb8c695ad19469d47fa&" alt="Servidor 2">
+                    <span>Desarrollador del bot</span>
+                </div>
+                <div class="server-item">
+                    <img src="https://cdn.discordapp.com/attachments/1189597284632100935/1458216694919987373/Screenshot_20260106_185004_Discord.jpg?ex=695ed5a0&is=695d8420&hm=28d844efde1143b5e9870db3a86755988f07e1fa979bdf239bd5cf24f196117c&" alt="Servidor 3">
+                    <span>Administrador</span>
+                </div>
+                <div class="server-item">
+                    <img src="https://cdn.discordapp.com/attachments/1189597284632100935/1458216694496366947/Screenshot_20260106_184943_Discord.jpg?ex=695ed5a0&is=695d8420&hm=8349a59316322e316315b2faff5c5db158768d3e40f99e0f032d004bf1458eee&" alt="Servidor 4">
+                    <span>Administrador</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipo" class="section">
+    <h2 class="section-title">Nuestro Equipo</h2>
+    <div class="cards-grid">
+        <div class="card">
+            <h3>Desarrollador de Bots</h3>
+            <p>Experto en Python, NLP y APIs, con proyectos implementados en sectores bancario y retail.</p>                
+        </div>
+
+        <div class="card">
+            <h3>Analista de Datos</h3>
+            <p>Profesional en análisis de métricas y optimización de procesos, con enfoque en resultados medibles.</p>
+        </div>
+    </div>
+</section>
+
+    <footer id="contacto">
+        <div class="footer-links">
+            <a href="privacy.html">Política de Privacidad</a>
+            <a href="terms.html">Términos de Servicio</a>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+        <p class="copyright">© 2026 xndev. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 100, density: { enable: true, value_area: 800 } },
+                color: { value: ["#ffffff", "#cccccc", "#aaaaaa"] },
+                shape: { type: ["circle", "edge"], stroke: { width: 0, color: "#000000" } },
+                opacity: { value: 0.8, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+                size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
+                line_linked: {
+                    enable: true,
+                    distance: 120,
+                    color: "#ffffff",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 4,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: { enable: true, rotateX: 600, rotateY: 1200 }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: ["grab", "repulse"] },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 1 } },
+                    repulse: { distance: 100, duration: 0.4 }
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+</body>
+</html>
