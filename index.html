@@ -207,56 +207,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Carrusel de servidores (10 segundos, continuo, sin reset) */
-        .servers-carousel {
-            width: 100%;
-            overflow: hidden;
-            margin: 3rem 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 5px;
-            padding: 2rem 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .servers-track {
-            display: flex;
-            animation: scroll 10s linear infinite;
-        }
-
-        .servers-track:hover {
-            animation-play-state: paused;
-        }
-
-        .server-item {
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 2.5rem;
-            text-align: center;
-        }
-
-        .server-item img {
-            width: 220px;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 5px;
-            border: 2px solid var(--blanco);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-        }
-
-        .server-item span {
-            color: var(--blanco);
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            font-weight: 600;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
         footer {
             background-color: var(--negro);
             padding: 3rem 2rem;
@@ -334,15 +284,6 @@
             .hero-content h1 {
                 font-size: 2.2rem;
             }
-
-            .server-item {
-                margin: 0 1.5rem;
-            }
-
-            .server-item img {
-                width: 160px;
-                height: 100px;
-            }
         }
     </style>
 </head>
@@ -387,24 +328,21 @@
                 <p>Desarrollo de dashboard personalizado para monitoreo en tiempo real de servidores y redes.</p>
             </div>
         </div>
-        <div class="servers-carousel">
-            <div class="servers-track">
-            </div>
-                
-    <section id="equipo" class="section">
-    <h2 class="section-title">Nuestro Equipo</h2>
-    <div class="cards-grid">
-        <div class="card">
-            <h3>Desarrollador de Bots</h3>
-            <p>Experto en Python, NLP y APIs, con proyectos implementados en sectores bancario y retail.</p>                
-        </div>
+    </section>
 
-        <div class="card">
-            <h3>Analista de Datos</h3>
-            <p>Profesional en análisis de métricas y optimización de procesos, con enfoque en resultados medibles.</p>
+    <section id="equipo" class="section">
+        <h2 class="section-title">Nuestro Equipo</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Desarrollador de Bots</h3>
+                <p>Experto en Python, NLP y APIs, con proyectos implementados en sectores bancario y retail.</p>
+            </div>
+            <div class="card">
+                <h3>Analista de Datos</h3>
+                <p>Profesional en análisis de métricas y optimización de procesos, con enfoque en resultados medibles.</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <footer id="contacto">
         <div class="footer-links">
